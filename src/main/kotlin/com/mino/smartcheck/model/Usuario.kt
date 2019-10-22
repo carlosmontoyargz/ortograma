@@ -18,13 +18,7 @@ class Usuario
 	@Column(name = "contrasena", nullable = false)
 	var password: String? = null
 
-	@ManyToOne(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
-	var rol: Rol? = null
-
-	@ManyToOne(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
-	var organizacion: Organizacion? = null
-
 	override fun toString(): String {
-		return "Usuario(id=$id, username=$username, password=$password, rol=$rol, organizacion=$organizacion)"
+		return "Usuario(id=$id, username=$username, password=$password)"
 	}
 }

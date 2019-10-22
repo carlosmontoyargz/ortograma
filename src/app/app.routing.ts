@@ -13,7 +13,7 @@ import {AuthGuard} from "./helpers/auth.guard";
 export const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'check',
+		redirectTo: 'perfil',
 		pathMatch: 'full',
 	},
 	{
@@ -53,12 +53,12 @@ export const routes: Routes = [
 		canActivate: [AuthGuard],
 		children: [
 			{
-				path: 'lecciones',
-				loadChildren: () => import('./modules/lecciones/lecciones.module').then(m => m.LeccionesModule)
+				path: 'perfil',
+				loadChildren: () => import('./modules/perfil/perfil.module').then(m => m.PerfilModule)
 			},
 			{
-				path: 'check',
-				loadChildren: () => import('./modules/check/check.module').then(m => m.CheckModule)
+				path: 'lecciones',
+				loadChildren: () => import('./modules/lecciones/lecciones.module').then(m => m.LeccionesModule)
 			},
 			{
 				path: 'estadisticas',

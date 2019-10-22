@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component
 
 @SpringBootApplication
 @EnableConfigurationProperties(SmartCheckProperties::class)
-class SmartCheckApplication
+class OrtogramaApplication
 
 fun main(args: Array<String>) {
-	SpringApplication.run(SmartCheckApplication::class.java, *args)
+	SpringApplication.run(OrtogramaApplication::class.java, *args)
 }
 
 @Component

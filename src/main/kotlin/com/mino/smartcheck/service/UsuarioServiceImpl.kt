@@ -1,10 +1,8 @@
 package com.mino.smartcheck.service
 
-import com.mino.smartcheck.data.RolRepository
 import com.mino.smartcheck.data.UsuarioRepository
 import com.mino.smartcheck.error.SignUpException
 import com.mino.smartcheck.model.Usuario
-import jdk.nashorn.internal.runtime.options.Option
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -12,8 +10,7 @@ import java.util.*
 @Service
 class UsuarioServiceImpl
 	@Autowired constructor(
-			val usuarioRepository: UsuarioRepository,
-			val rolRepository: RolRepository) : UsuarioService
+			val usuarioRepository: UsuarioRepository) : UsuarioService
 {
 	override fun obtenerTodos(): List<Usuario> = usuarioRepository.findAll()
 
@@ -29,11 +26,6 @@ class UsuarioServiceImpl
 	{
 		if (usuarioRepository.existsByUsername(usuario.username!!))
 			throw SignUpException("El usuario ya existe")
-
-		usuario.rol = rolRepository
-				.findByNombre(usuario.rol?.nombre.toString())
-				.orElseThrow { SignUpException("No existe el rol especificado") }
-
-		return usuarioRepository.save(usuario)
+		else return usuarioRepository.save(usuario)
 	}
 }
