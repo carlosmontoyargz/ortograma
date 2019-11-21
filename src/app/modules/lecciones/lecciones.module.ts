@@ -31,6 +31,10 @@ import {AcentuacionComponent} from "./acentuacion/acentuacion.component";
 import {PuntuacionComponent} from "./puntuacion/puntuacion.component";
 import {LetrasComponent} from "./letras/letras.component";
 
+import {MatRadioModule} from '@angular/material/radio';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +47,9 @@ import {LetrasComponent} from "./letras/letras.component";
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+	  MatRadioModule
   ],
   declarations: [
     AcentuacionComponent,

@@ -142,9 +142,45 @@
           </ul>
         </tab>
         <tab heading="Preguntas">
-          2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+          <div *ngFor="let pregunta of preguntas">
+            <label id="{{pregunta.id}}" [innerHTML] = "pregunta.pregunta"></label>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="pregunta.seleccionada">
+              <mat-radio-button class="example-radio-button" *ngFor="let res of pregunta.respuestas" [value]="res">
+                {{res}}
+              </mat-radio-button>
+            </mat-radio-group>
+            <div><p> </p></div>
+          </div>
+
+          <button type="button" class="btn btn-success mr-1" data-toggle="modal" (click)="enviarEvaluacion()">
+            Enviar resultados
+          </button>
         </tab>
       </tabset>
     </div><!--/.col-->
   </div><!--/.row-->
 </div>
+
+<div bsModal #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-success" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Resultados</h4>
+        <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Tu resultado fue de {{respuestasCorrectas}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Cerrar</button>
+        <!--<button type="button" class="btn btn-success">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
