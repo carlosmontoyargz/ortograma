@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 import {UserService} from "./user.service";
+import {Router} from "@angular/router"
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -12,7 +13,8 @@ export class AuthenticationService {
 	public currentUser: Observable<User>;
 
 	constructor(private http: HttpClient,
-				private userService: UserService) {
+				private userService: UserService,
+				private router: Router) {
 		this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
 		this.currentUser = this.currentUserSubject.asObservable();
 	}
@@ -42,5 +44,6 @@ export class AuthenticationService {
 		// remove user from local storage and set current user to null
 		localStorage.removeItem('currentUser');
 		this.currentUserSubject.next(null);
+//		this.router.navigate(['/login'])
 	}
 }
