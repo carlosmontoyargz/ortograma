@@ -28,11 +28,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import {LeccionesRoutingModule} from "./lecciones-routing.module";
 import {AcentuacionComponent} from "./acentuacion/acentuacion.component";
-import {ComaComponent} from "./coma/coma.component";
-import {DiptongosComponent} from "./diptongos/diptongos.component";
-import {MayusculasComponent} from "./mayusculas/mayusculas.component";
 import {PuntuacionComponent} from "./puntuacion/puntuacion.component";
-import {SilabasComponent} from "./silabas/silabas.component";
+import {LetrasComponent} from "./letras/letras.component";
 
 @NgModule({
   imports: [
@@ -50,11 +47,8 @@ import {SilabasComponent} from "./silabas/silabas.component";
   ],
   declarations: [
     AcentuacionComponent,
-    ComaComponent,
-    DiptongosComponent,
-    MayusculasComponent,
     PuntuacionComponent,
-    SilabasComponent,
+    LetrasComponent,
   ]
 })
 export class LeccionesModule { }

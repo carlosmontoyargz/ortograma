@@ -5,8 +5,7 @@ import javax.persistence.*
 @Entity
 class Leccion
 {
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	var id: Int = 0
 
 	@Column(nullable = false)

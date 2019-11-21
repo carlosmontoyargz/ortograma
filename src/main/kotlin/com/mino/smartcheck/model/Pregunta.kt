@@ -16,9 +16,6 @@ class Pregunta
 	var pregunta: String? = null
 
 	@Column(nullable = false)
-	var opcionMultiple: Boolean = true;
-
-	@Column(nullable = false)
 	var respuestaCorrecta: String? = null
 
 	var respuestaIncorrecta1: String? = null

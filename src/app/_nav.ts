@@ -54,23 +54,8 @@ export const navItems: NavData[] = [
 		icon: 'cui-note',
 		children: [
 			{
-				name: 'Sílabas',
-				url: '/lecciones/silabas',
-				icon: 'cui-lightbulb'
-			},
-			{
-				name: 'Diptongos',
-				url: '/lecciones/diptongos',
-				icon: 'cui-lightbulb'
-			},
-			{
-				name: 'Acentuación',
-				url: '/lecciones/acentuacion',
-				icon: 'cui-lightbulb'
-			},
-			{
-				name: 'Coma',
-				url: '/lecciones/coma',
+				name: 'Letras',
+				url: '/lecciones/letras',
 				icon: 'cui-lightbulb'
 			},
 			{
@@ -79,8 +64,8 @@ export const navItems: NavData[] = [
 				icon: 'cui-lightbulb'
 			},
 			{
-				name: 'Mayúsculas y minúsculas',
-				url: '/lecciones/mayusculas',
+				name: 'Acentuación',
+				url: '/lecciones/acentuacion',
 				icon: 'cui-lightbulb'
 			},
 		]

@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AcentuacionComponent} from "./acentuacion/acentuacion.component";
-import {ComaComponent} from "./coma/coma.component";
-import {DiptongosComponent} from "./diptongos/diptongos.component";
-import {MayusculasComponent} from "./mayusculas/mayusculas.component";
 import {PuntuacionComponent} from "./puntuacion/puntuacion.component";
-import {SilabasComponent} from "./silabas/silabas.component";
+import {LetrasComponent} from "./letras/letras.component";
 
 const routes: Routes = [
   {
@@ -16,34 +13,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'acentuacion'
+        redirectTo: 'letras'
       },
       {
-        path: 'acentuacion',
-        component: AcentuacionComponent,
+        path: 'letras',
+        component: LetrasComponent,
         data: {
           title: 'Acentuacion'
-        }
-      },
-      {
-        path: 'coma',
-        component: ComaComponent,
-        data: {
-          title: 'Coma'
-        }
-      },
-      {
-        path: 'diptongos',
-        component: DiptongosComponent,
-        data: {
-          title: 'Diptongos'
-        }
-      },
-      {
-        path: 'mayusculas',
-        component: MayusculasComponent,
-        data: {
-          title: 'Mayusculas y minusculas'
         }
       },
       {
@@ -54,8 +30,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'silabas',
-        component: SilabasComponent,
+        path: 'acentuacion',
+        component: AcentuacionComponent,
         data: {
           title: 'Silabas'
         }

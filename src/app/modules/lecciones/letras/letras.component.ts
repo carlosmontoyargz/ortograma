@@ -3,9 +3,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
-  templateUrl: 'silabas.component.html'
+  templateUrl: 'letras.component.html'
 })
-export class SilabasComponent {
+export class LetrasComponent {
 
   constructor(sanitizer: DomSanitizer) {
     this.html = sanitizer.sanitize(SecurityContext.HTML, this.html);
