@@ -9,7 +9,7 @@ const routes: Routes = [
 		path: '',
 		component: EstadisticasComponent,
 		data: {
-			title: 'Check'
+			title: 'Puntajes altos'
 		},
 		/*children: [
 			{

@@ -13,7 +13,7 @@ import java.util.*
 @RepositoryRestResource(path = "puntajes", collectionResourceRel = "puntajes")
 interface PuntajeRepository: JpaRepository<Puntaje, Int>
 {
-	fun findByLeccionOrderByPuntajeDesc(leccion: Leccion): List<Puntaje>
+	fun findByLeccion_ClaveOrderByPuntajeDesc(leccion: String): List<Puntaje>
 
 	fun findFirstByLeccion_ClaveAndUsuarioOrderByPuntajeDesc(leccion: String, usuario: String)
 			: Optional<Puntaje>
