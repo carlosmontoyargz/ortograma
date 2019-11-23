@@ -19,7 +19,7 @@ import java.util.stream.Collectors
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @CrossOrigin("*")
 class UsuarioController
 	@Autowired constructor(val usuarioService: UsuarioService,
@@ -71,7 +71,7 @@ class UsuarioController
 							.map { it.authority }
 							.collect(Collectors.toList()))
 					.setIssuedAt(Date(System.currentTimeMillis()))
-					.setExpiration(Date(System.currentTimeMillis() + 600000))
+					.setExpiration(Date(System.currentTimeMillis() + 600000000))
 					.signWith(SignatureAlgorithm.HS512, smartCheckProperties.secretKey.toByteArray())
 					.compact()}"
 }

@@ -11,9 +11,9 @@ class Leccion
 	@Column(nullable = false)
 	var clave: String? = null
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "text")
 	var contenido: String? = null
 
-	@OneToMany(mappedBy = "leccion")
+	@OneToMany(mappedBy = "leccion", cascade = [CascadeType.ALL])
 	var preguntas: MutableSet<Pregunta> = HashSet()
 }

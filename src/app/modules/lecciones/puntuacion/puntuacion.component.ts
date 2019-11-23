@@ -1,5 +1,7 @@
 import {Component, SecurityContext, ViewChild} from '@angular/core';
 import {ModalDirective} from "ngx-bootstrap";
+import {LeccionService} from "../../../services/leccion.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -8,10 +10,34 @@ import {ModalDirective} from "ngx-bootstrap";
 })
 export class PuntuacionComponent {
 
-  constructor() {
-  }
+  constructor(private sanitizer: DomSanitizer,
+              private leccionService: LeccionService) {}
 
   @ViewChild('successModal', {static: false}) public successModal: ModalDirective;
+
+  respuestasCorrectas = 0;
+  content = "";
+
+  ngOnInit(): void {
+    this.leccionService.getLeccion('puntuacion').subscribe(
+      leccion => {
+        console.log(leccion);
+        this.content = this.sanitizer.sanitize(SecurityContext.HTML, leccion.contenido);
+      },
+      error => { console.log(error) }
+    )
+  }
+
+  enviarEvaluacion() {
+    this.respuestasCorrectas = this.calcularRespuestasCorrectas();
+    this.successModal.show()
+  }
+
+  calcularRespuestasCorrectas(): number {
+    let c = 0;
+    this.preguntas.forEach(p => { if (p.seleccionada === p.correcta) c++ });
+    return c;
+  }
 
   preguntas = [
     {
@@ -65,17 +91,4 @@ export class PuntuacionComponent {
       seleccionada: ''
     },
   ];
-
-  respuestasCorrectas = 0;
-
-  enviarEvaluacion() {
-    this.respuestasCorrectas = this.calcularRespuestasCorrectas();
-    this.successModal.show()
-  }
-
-  calcularRespuestasCorrectas(): number {
-    let c = 0;
-    this.preguntas.forEach(p => { if (p.seleccionada === p.correcta) c++ });
-    return c;
-  }
 }

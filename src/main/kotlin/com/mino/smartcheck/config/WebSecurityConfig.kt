@@ -26,9 +26,10 @@ class WebSecurityConfig
 				.addFilterAt(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter::class.java)
 				.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/", "/index.html").permitAll() // FIXME authorize angular
-				.antMatchers(HttpMethod.POST, "/users/authenticate", "/users/register").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/users/authenticate", "/api/users/register")
+					.permitAll()
 				//.antMatchers(HttpMethod.OPTIONS, "/users/authenticate", "/users/register").permitAll()
-				.antMatchers("/users/**", "/checks/**").authenticated()
+				.antMatchers("/api/**").authenticated()
 				.and().cors()
 	}
 

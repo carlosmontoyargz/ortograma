@@ -1,5 +1,6 @@
 import {Component, SecurityContext} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import {LeccionService} from "../../../services/leccion.service";
 
 
 @Component({
@@ -7,11 +8,31 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class AcentuacionComponent {
 
-  constructor(sanitizer: DomSanitizer) {
-    this.html = sanitizer.sanitize(SecurityContext.HTML, this.html);
+  constructor(private sanitizer: DomSanitizer,
+              private leccionService: LeccionService) {}
+
+  content: string = '';
+
+  ngOnInit(): void {
+    this.leccionService.getLeccion('acentuacion').subscribe(
+      leccion => {
+        console.log(leccion);
+        this.content = this.sanitizer.sanitize(SecurityContext.HTML, leccion.contenido);
+      },
+      error => { console.log(error) }
+    )
   }
 
-  title: string = 'Welcome word';
-  content: string = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
-  html: string = `<span class="btn btn-warning">Never trust not sanitized <code>HTML</code>!!!</span>`;
+  respuestasCorrectas = 0;
+
+  enviarEvaluacion() {
+    this.respuestasCorrectas = this.calcularRespuestasCorrectas();
+    //this.successModal.show()
+  }
+
+  calcularRespuestasCorrectas(): number {
+    let c = 0;
+    //this.preguntas.forEach(p => { if (p.seleccionada === p.correcta) c++ });
+    return c;
+  }
 }

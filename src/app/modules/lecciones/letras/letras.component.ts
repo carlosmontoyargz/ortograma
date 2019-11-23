@@ -1,19 +1,31 @@
-import {Component, SecurityContext, ViewChild} from '@angular/core';
+import {Component, OnInit, SecurityContext, ViewChild} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ModalDirective} from "ngx-bootstrap";
+import {LeccionService} from "../../../services/leccion.service";
 
 
 @Component({
   templateUrl: 'letras.component.html',
 	styleUrls: ['letras.component.css']
 })
-export class LetrasComponent {
+export class LetrasComponent implements OnInit {
 
-  constructor(sanitizer: DomSanitizer) {
-    this.html = sanitizer.sanitize(SecurityContext.HTML, this.html);
-  }
+  constructor(private sanitizer: DomSanitizer,
+              private leccionService: LeccionService) {}
 
   @ViewChild('successModal', {static: false}) public successModal: ModalDirective;
+
+  content = "";
+
+  ngOnInit(): void {
+    this.leccionService.getLeccion('letras').subscribe(
+      leccion => {
+        console.log(leccion);
+        this.content = this.content = this.sanitizer.sanitize(SecurityContext.HTML, leccion.contenido);
+      },
+      error => { console.log(error) }
+    )
+  }
 
   preguntas = [
 	  {

@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	apiUrl: 'https://ortograma.herokuapp.com'
+	apiUrl: 'https://ortograma.herokuapp.com/api'
 };

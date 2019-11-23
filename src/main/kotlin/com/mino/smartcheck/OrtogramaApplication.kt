@@ -1,13 +1,22 @@
 package com.mino.smartcheck
 
 import com.mino.smartcheck.config.SmartCheckProperties
-import org.apache.logging.log4j.LogManager
+import com.mino.smartcheck.data.LeccionRepository
+import com.mino.smartcheck.data.UsuarioRepository
+import com.mino.smartcheck.model.Leccion
+import com.mino.smartcheck.model.Usuario
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.context.ApplicationListener
+import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
+import java.io.File
+import java.io.InputStream
+
 
 @SpringBootApplication
 @EnableConfigurationProperties(SmartCheckProperties::class)
@@ -18,13 +27,36 @@ fun main(args: Array<String>) {
 }
 
 @Component
-class Runner
-	@Autowired constructor(val smartCheckProperties: SmartCheckProperties):
-		CommandLineRunner
+class LoadSampleData
+	@Autowired constructor(
+			val usuarioRepository: UsuarioRepository,
+			val leccionRepository: LeccionRepository)
+	: ApplicationListener<ApplicationReadyEvent>
 {
-	private var log = LogManager.getLogger()
+	val adminUsername = "carlos.montoya.rdgz@gmail.com"
 
-	override fun run(vararg args: String?) {
-		log.info("Secret key: {}", smartCheckProperties.secretKey)
+	override fun onApplicationEvent(event: ApplicationReadyEvent) {
+		if (!usuarioRepository.existsByUsername(adminUsername)) {
+			usuarioRepository.save(Usuario().apply {
+				username = adminUsername
+				password = "sipirili"
+			})
+		}
+		if (leccionRepository.count() == 0L) {
+			leccionRepository.saveAll(ArrayList<Leccion>().apply {
+				add(Leccion().apply {
+					clave = "puntuacion"
+					contenido = ClassPathResource("templates/puntuacion.html").file.readText()
+				})
+				add(Leccion().apply {
+					clave = "acentuacion"
+					contenido = ClassPathResource("templates/acentuacion.html").file.readText()
+				})
+				add(Leccion().apply {
+					clave = "letras"
+					contenido = ClassPathResource("templates/letras.html").file.readText()
+				})
+			})
+		}
 	}
 }
