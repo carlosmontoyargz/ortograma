@@ -2,6 +2,7 @@ export class Leccion {
   id: number;
   clave: string;
   contenido: string;
+  _links: any;
 }
 
 export class Puntaje {
@@ -9,4 +10,5 @@ export class Puntaje {
   leccion: string;
   usuario: string;
   puntaje: number;
+  _links: any;
 }

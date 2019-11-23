@@ -2,6 +2,9 @@ import {Component, OnInit, SecurityContext, ViewChild} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ModalDirective} from "ngx-bootstrap";
 import {LeccionService} from "../../../services/leccion.service";
+import {Leccion, Puntaje} from "../../../models/models";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {PuntajeService} from "../../../services/puntaje.service";
 
 
 @Component({
@@ -11,20 +14,44 @@ import {LeccionService} from "../../../services/leccion.service";
 export class LetrasComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer,
-              private leccionService: LeccionService) {}
+              private leccionService: LeccionService,
+              private authenticationService: AuthenticationService,
+              private puntajeService: PuntajeService) {}
 
   @ViewChild('successModal', {static: false}) public successModal: ModalDirective;
 
   content = "";
+  leccion: Leccion = null;
 
   ngOnInit(): void {
     this.leccionService.getLeccion('letras').subscribe(
       leccion => {
         console.log(leccion);
+        this.leccion = leccion;
         this.content = this.content = this.sanitizer.sanitize(SecurityContext.HTML, leccion.contenido);
       },
       error => { console.log(error) }
     )
+  }
+
+  respuestasCorrectas = 0;
+
+  enviarEvaluacion() {
+    this.respuestasCorrectas = this.calcularRespuestasCorrectas();
+    let p = new Puntaje();
+    p.leccion = this.leccion._links.self.href;
+    p.usuario = this.authenticationService.currentUserValue.username;
+    p.puntaje = this.respuestasCorrectas;
+    this.puntajeService.postPuntaje(p).subscribe(
+      data => { this.successModal.show() },
+      error => { console.log(error)}
+    );
+  }
+
+  calcularRespuestasCorrectas(): number {
+    let c = 0;
+    this.preguntas.forEach(p => { if (p.seleccionada === p.correcta) c++ });
+    return c;
   }
 
   preguntas = [
@@ -252,19 +279,6 @@ export class LetrasComponent implements OnInit {
       seleccionada: ''
     },
   ];
-
-  respuestasCorrectas = 0;
-
-  enviarEvaluacion() {
-    this.respuestasCorrectas = this.calcularRespuestasCorrectas();
-    this.successModal.show()
-  }
-
-  calcularRespuestasCorrectas(): number {
-    let c = 0;
-    this.preguntas.forEach(p => { if (p.seleccionada === p.correcta) c++ });
-    return c;
-  }
 
   html: string = `<span class="btn btn-warning">Never trust not sanitized <code>HTML</code>!!!</span>`;
 }

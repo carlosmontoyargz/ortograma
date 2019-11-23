@@ -8,6 +8,16 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:8080/api/puntajes/search/findByLeccionOrderByPuntajeDesc?leccion=%2Flecciones%2F7
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJtaW5vSldUIiwic3ViIjoiY2FybG9zLm1vbnRveWEucmRnekBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNTc0NDk4NjIxLCJleHAiOjE1NzQ0OTkyMjF9.D1yfBZNDZCjT8sElbcWm682xvzpL7o-cTTx4x7MiU_48P3SovWUgTb2EKBGiW9y0nQG1iBYqRe6V2E3HYBJllw
+
+###
+
+GET http://localhost:8080/api/puntajes/search/findFirstByLeccion_ClaveAndUsuarioOrderByPuntajeDesc?leccion=puntuacion&usuario=carlos.montoya.rdgz@gmail.com&
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJtaW5vSldUIiwic3ViIjoiY2FybG9zLm1vbnRveWEucmRnekBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNTc0NTA2MDI2LCJleHAiOjE1NzUxMDYwMjZ9.CwTcWulTi5ULQ29X-OW1Ea8ZSWM5enMkr9SiAN9LZ20nMAaaCcuLiGtWcPjwx_H-EkWKj4YP0QxLqEbPb-sOKg
+
+###
+
 POST http://localhost:8080/api/puntajes
 Content-Type: application/json
 
@@ -16,10 +26,5 @@ Content-Type: application/json
   "usuario": "carlos5",
   "puntaje": 5
 }
-
-###
-
-GET http://localhost:8080/api/puntajes/search/findByLeccionOrderByPuntajeDesc?leccion=%2Flecciones%2F7
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJtaW5vSldUIiwic3ViIjoiY2FybG9zLm1vbnRveWEucmRnekBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNTc0NDk4NjIxLCJleHAiOjE1NzQ0OTkyMjF9.D1yfBZNDZCjT8sElbcWm682xvzpL7o-cTTx4x7MiU_48P3SovWUgTb2EKBGiW9y0nQG1iBYqRe6V2E3HYBJllw
 
 ###

@@ -1,5 +1,7 @@
 package com.mino.smartcheck.model
 
+import org.springframework.data.annotation.CreatedDate
+import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
@@ -18,4 +20,7 @@ class Puntaje
 
 	@Column(nullable = false)
 	var puntaje: Int? = null
+
+	@CreatedDate
+	var fecha: LocalDate? = null;
 }

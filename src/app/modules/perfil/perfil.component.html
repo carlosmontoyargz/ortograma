@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <div class="card">
         <div class="card-header">
           Informacion del usuario <!--<code>prepend</code>-->
@@ -10,33 +10,51 @@
             <div class="form-group">
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-user"></i></span>
-                </div>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Username">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 </div>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="email">
+                <input [disabled]="true"
+                       placeholder="{{user.username}}"
+                       type="email" id="email" name="email" class="form-control">
               </div>
             </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
-                </div>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" autocomplete="current-password">
-              </div>
-            </div>
-            <div class="form-group form-actions">
+            <!--<div class="form-group form-actions">
               <button type="submit" class="btn btn-sm btn-success">Submit</button>
-            </div>
+            </div>-->
           </form>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Puntajes altos
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Leccion</th>
+                <th>Puntaje</th>
+                <!--<th>Fecha</th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Letras</td>
+                <td>{{puntuacionLetras}}</td>
+              </tr>
+              <tr>
+                <td>Puntuacion</td>
+                <td>{{puntuacionPuntuacion}}</td>
+              </tr>
+              <tr>
+                <td>Acentuacion</td>
+                <td>{{puntuacionAcentuacion}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

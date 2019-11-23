@@ -2,6 +2,9 @@ import {Component, SecurityContext, ViewChild} from '@angular/core';
 import {ModalDirective} from "ngx-bootstrap";
 import {LeccionService} from "../../../services/leccion.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Leccion, Puntaje} from "../../../models/models";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {PuntajeService} from "../../../services/puntaje.service";
 
 
 @Component({
@@ -11,17 +14,22 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class PuntuacionComponent {
 
   constructor(private sanitizer: DomSanitizer,
-              private leccionService: LeccionService) {}
+              private leccionService: LeccionService,
+              private puntajeService: PuntajeService,
+              private authenticationService: AuthenticationService) {}
 
   @ViewChild('successModal', {static: false}) public successModal: ModalDirective;
 
   respuestasCorrectas = 0;
   content = "";
 
+  leccion: Leccion = null;
+
   ngOnInit(): void {
     this.leccionService.getLeccion('puntuacion').subscribe(
       leccion => {
         console.log(leccion);
+        this.leccion = leccion;
         this.content = this.sanitizer.sanitize(SecurityContext.HTML, leccion.contenido);
       },
       error => { console.log(error) }
@@ -30,7 +38,15 @@ export class PuntuacionComponent {
 
   enviarEvaluacion() {
     this.respuestasCorrectas = this.calcularRespuestasCorrectas();
-    this.successModal.show()
+
+    let p = new Puntaje();
+    p.leccion = this.leccion._links.self.href;
+    p.usuario = this.authenticationService.currentUserValue.username;
+    p.puntaje = this.respuestasCorrectas;
+    this.puntajeService.postPuntaje(p).subscribe(
+      data => { this.successModal.show() },
+      error => { console.log(error)}
+    )
   }
 
   calcularRespuestasCorrectas(): number {
