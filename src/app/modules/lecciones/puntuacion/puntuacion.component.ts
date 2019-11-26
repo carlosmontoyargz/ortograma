@@ -57,33 +57,7 @@ export class PuntuacionComponent {
 
   preguntas = [
     {
-      id: 'example-radio-group-label-1',
-      pregunta:
-        '<p>En el siguiente texto agrega los signos de puntuación que se han omitido.<p>' +
-        '<p>' +
-        '__Caramba, todo me sale mal__, se lamentaba constantemente Uga_ la tortuga_ Y no era para menos_ ' +
-        'siempre llegaba tarde, era la última en terminar sus tareas_ casi nunca ganaba premios por su rapidez y, ' +
-        'para colmo era una dormilona. __Esto tiene que cambiar__, se propuso un buen día, harta de que sus ' +
-        'compañeros del bosque le recriminaran por su poco esfuerzo_ Y optó por no hacer nada_ ni siquiera ' +
-        'tareas tan sencillas como amontonar las hojitas secas caídas de los árboles en otoño o quitar las ' +
-        'piedrecitas del camino a la charca. –“__Para qué preocuparme en hacerlo si luego mis compañeros lo ' +
-        'terminarán más rápido__ Mejor me dedico a jugar y a descansar”. – “No es una gran idea”, dijo una ' +
-        'hormiguita_ “Lo que verdaderamente cuenta no es hacer el trabajo en tiempo récord_ lo importante es ' +
-        'hacerlo lo mejor que sepas_ pues siempre te quedarás con la satisfacción de haberlo conseguido.' +
-        '</p>',
-      respuestas: [
-        '¿ ? , , . . ¿ ? . , ¿ ? . , ,',
-        '¡ ! , . , , ¡ ! . . ¿ ? . , ,',
-        '¿ ? , . . . ¿ ? , , ¿ ? . , ,',
-        '¿ ? , . . . ¿ ? , , ¿ ? . , ,',
-        '¿ ? . . . . . . , , ¿ ? . , ,',
-        '¡ ! , . , , ¡ ! . , ¿ ? . , ,',
-      ],
-      correcta: '¡ ! , . , , ¡ ! . , ¿ ? . , ,',
-      seleccionada: ''
-    },
-    {
-      id: 'example-radio-group-label-2',
+      id: 'example-radio-group-label-0',
       pregunta:
         '<p>En el siguiente texto agrega los signos de puntuación que se han omitido.<p>' +
         '<p>' +
@@ -104,6 +78,123 @@ export class PuntuacionComponent {
         '. . . ¡ ! ¿ ? , , .',
       ],
       correcta: '. . . ¡ ! ¿ ? , , .',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-1',
+      pregunta:
+        '<p>En el siguiente texto agrega los signos de puntuación que se han omitido, de acuerdo a los incisos.<p>' +
+        '<p>' +
+        '__Caramba, todo me sale mal__, se lamentaba constantemente Uga_ la tortuga_ Y no era para menos_ ' +
+        'siempre llegaba tarde, era la última en terminar sus tareas_ casi nunca ganaba premios por su rapidez y, ' +
+        'para colmo era una dormilona. __Esto tiene que cambiar__, se propuso un buen día, harta de que sus ' +
+        'compañeros del bosque le recriminaran por su poco esfuerzo_ Y optó por no hacer nada_ ni siquiera ' +
+        'tareas tan sencillas como amontonar las hojitas secas caídas de los árboles en otoño o quitar las ' +
+        'piedrecitas del camino a la charca. –“__Para qué preocuparme en hacerlo si luego mis compañeros lo ' +
+        'terminarán más rápido__ Mejor me dedico a jugar y a descansar”. – “No es una gran idea”, dijo una ' +
+        'hormiguita_ “Lo que verdaderamente cuenta no es hacer el trabajo en tiempo récord_ lo importante es ' +
+        'hacerlo lo mejor que sepas_ pues siempre te quedarás con la satisfacción de haberlo conseguido.' +
+        '</p>',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '¡',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-2',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '!',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-3',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-4',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '.',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-5',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-6',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-7',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '¡',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-8',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '!',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-9',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '.',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-10',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-11',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '¿',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-12',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '?',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-13',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: '.',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-14',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
+      seleccionada: ''
+    },
+    {
+      id: 'example-radio-group-label-15',
+      pregunta: '',
+      respuestas: [ '¿', '?', '!', '¡', ',', '.' ],
+      correcta: ',',
       seleccionada: ''
     },
   ];

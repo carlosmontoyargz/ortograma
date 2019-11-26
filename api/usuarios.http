@@ -1,4 +1,4 @@
-POST http://localhost:8080/users/authenticate
+POST http://localhost:8080/authenticate
 Content-Type: application/json
 
 {
@@ -12,7 +12,8 @@ GET http://localhost:8080/api/users/22
 
 ###
 
-GET http://localhost:8080/api/users
+GET http://localhost:8080/api/usuarios
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYXJsb3MubW9udG95YS5yZGd6QGdtYWlsLmNvbSIsImV4cCI6MTU3NDcyNDY4NiwiaWF0IjoxNTc0NzA2Njg2fQ.uaA78l-0YT7crsmjZ6gYIPFc_ypJuO-dKddcaZmM6BG_evUcGVjo8zvJtBmI306_pj_WYjzXJxBpxxgLE9V-1g
 
 ###
 

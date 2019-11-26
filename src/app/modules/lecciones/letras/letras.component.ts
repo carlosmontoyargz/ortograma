@@ -62,7 +62,7 @@ export class LetrasComponent implements OnInit {
         '<li>ta_la</li>' +
         '<li>reci_ir</li>' +
         '<li>distri_uir</li>' +
-        '<li>ser_vir</li>' +
+        '<li>ser_ir</li>' +
         '<li>ca_le</li>' +
         '</ul>',
 		  respuestas: [

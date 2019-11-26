@@ -4,7 +4,7 @@
 
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
-  Rubik,
+  -apple-system,
     // Chrome < 56 for OS X (San Francisco)
   Rubik,
     // Windows
@@ -32,3 +32,4 @@ $font-family-sans-serif:
     // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 */
+

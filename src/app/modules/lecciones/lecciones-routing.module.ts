@@ -33,7 +33,7 @@ const routes: Routes = [
         path: 'acentuacion',
         component: AcentuacionComponent,
         data: {
-          title: 'Silabas'
+          title: 'Acentuacion'
         }
       },
     ]

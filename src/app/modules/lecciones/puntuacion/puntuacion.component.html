@@ -184,7 +184,9 @@
               aria-labelledby="example-radio-group-label"
               class="example-radio-group"
               [(ngModel)]="pregunta.seleccionada">
-              <mat-radio-button class="example-radio-button" *ngFor="let res of pregunta.respuestas" [value]="res">
+              <mat-radio-button
+                class="example-radio-button"
+                *ngFor="let res of pregunta.respuestas" [value]="res">
                 {{res}}
               </mat-radio-button>
             </mat-radio-group>
