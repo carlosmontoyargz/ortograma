@@ -221,8 +221,6 @@ export class LetrasComponent implements OnInit {
         '</ul>',
         respuestas: [
         'manguera, injerto, teje, cardiología, esfinge, digestión',
-        'teje, manguera, injerto, esfinge, digestión, cardiología',
-        'digestión, esfinge, injerto, cardiología, manguera, teje',
         'injerto, cardiología, esfinge, manguera, digestión, teje',
       ],
       correcta: 'injerto, cardiología, esfinge, manguera, digestión, teje',
